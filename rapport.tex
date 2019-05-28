@@ -1,0 +1,95 @@
+\documentclass[11pt]{report}
+    \usepackage[french]{babel}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc} 
+    \usepackage{graphicx}
+    \usepackage{tikz}
+    \usepackage{tocbibind}
+    \usepackage[pdftex,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+    \usepackage{anysize}
+    \usepackage{icomma}
+    \usepackage[pagestyles]{titlesec}
+    \usepackage{titlesec}
+    \usepackage{glossaries}
+    
+    % marges
+    \usepackage[margin=2cm]{geometry}
+    % Font (calibri like)
+    % Line spacing
+    \usepackage{setspace}
+
+
+    \usetikzlibrary{positioning}
+    \DeclareGraphicsExtensions{.jpg,.pdf,.png,.PNG}
+    \fboxsep=0mm%padding thickness
+    \fboxrule=1pt%border thickness
+    % Chapters titles
+    \titleformat{\chapter}[block]{\Large\bfseries}{\thechapter}{1em}{}
+    \titleformat{\section}[block]{\large\bfseries}{\thesection}{1em}{}
+    \titleformat{\subsection}[block]{\bfseries}{\thesubsection}{1em}{}
+    % Delete some spaces between the chapter title and the top of the page
+    \titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+    
+    \makeglossaries
+    \loadglsentries{Pages/Glossaire}
+    \begin{document}
+    \begin{titlepage}
+        \begin{tikzpicture}[overlay, remember picture]
+            \path (current page.north east) ++(-1,-1) node[below left] {FELIX Alexandre, Architecture des logiciels, Promotion 2017-2018};
+        \end{tikzpicture}
+    \begin{center} 
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.33\textwidth}
+            \includegraphics[width=0.8\textwidth]{Images/eurice} % Entreprise
+        \end{minipage}
+        \begin{minipage}{0.33\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{Images/esgi} % École
+        \end{minipage}
+    \end{figure}
+    ~\\[3\baselineskip]
+    
+    % Title
+    \rule{\linewidth}{0.5mm} \\[0.4cm]
+    { \huge \bfseries Rapport d'activité en entreprise\\[0.4cm] }
+    \rule{\linewidth}{0.5mm} \\[1.5cm]
+    
+    % Supervisors
+    {\large Entreprise: Eurice}\\[0.3cm]
+    {\large Tuteur en entreprise: Yannick Lavoix (Eurice)}\\[0.3cm]
+    {\large Septembre 2017 - Septembre 2019, Contrat de professionalisation}\\[0.3cm]
+    \vfill
+    % Bottom of the page
+    \end{center}
+    \end{titlepage}
+    \clearpage
+    
+    \chapter*{Remerciements}
+    \addcontentsline{toc}{chapter}{Remerciements}
+    Tout d’abord, je remercie M. Yannick Lavoix, mon maître d’apprentissage,
+    pour m’avoir encadré durant cette alternance. 
+    
+    
+    Je souhaite remercier l’ensemble de l’entreprise Eurice qui a
+    rendu cet apprentissage possible et m’a permis d’acquérir de nombreux nouveaux
+    savoirs et compétences.\newline
+    
+    Enfin, je remercie l'ESGI pour avoir rendu
+    cette alternance possible et m’avoir fait bénéficier de cours enrichissants avec
+    une équipe pédagogique de qualité tout au long de l’année. \newline
+
+    \renewcommand{\baselinestretch}{1.30}\small \normalsize
+    \tableofcontents
+    \renewcommand{\baselinestretch}{1.18}\small \normalsize
+    
+    \include{Pages/Introduction}
+    \include{Pages/ContexteEntreprise}
+    \include{Pages/Missions}
+    \include{Pages/Ingenieur}
+    \include{Pages/Conclusion}
+    \printglossaries
+    \include{Pages/TableDesFigures}
+    
+    \end{document}
+    

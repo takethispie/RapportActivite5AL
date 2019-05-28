@@ -1,0 +1,124 @@
+@startuml slot model
+class Contact {
+    +Id
+    +Nom
+    +Prenom
+    +Societe
+    +CodePostal
+    +Adresse
+    +Ville
+    +Email
+    +Note
+    +DateNaissance
+    +DateDerniereUtilisation
+    +DateDernierRdv
+    +indesirable
+}
+
+interface ISlot {
+    +Remarque
+    +Id
+    +Date
+    +Couleur
+    +Duree
+    +Accept(ISlotVisitor visitor)
+}
+
+
+
+class SlotFactory {
+    +Create(): SlotPris
+    +Create(): SlotLibre
+}
+
+
+
+interface IContactRepository {
+    +Contact GetById(int id)
+    +bool Create(Contact item)
+    +bool Update(Contact item)
+    +bool Delete(Contact item)
+    +List<Contact> GetByPaging(int page, int amount, string searchTerm)
+}
+
+interface ICreneauRepository {
+
+    +ISlot GetById(int id)
+    +bool Create(ISlot item)
+    +bool Update(ISlot item)
+    +bool Delete(ISlot item)
+    +ISlot GetByDate(DateTime Date)
+    +List<ISlot> GetAllByDate(DateTime Date)
+}
+
+
+interface ICustomfieldRepository {
+    +CustomField GetById(int id)
+    +bool Create(CustomField item)
+    +bool Update(CustomField item)
+    +bool Delete(CustomField item)
+    +List<CustomField> GetAll(int idUser)
+}
+
+interface IMessageRepository {
+    +Message GetById(int id)
+    +bool Create(Message item)
+    +bool Update(Message item)
+    +bool Delete(Message item)
+    +List<Message> GetAllByDate(DateTime date)
+}
+
+interface ISettingsRepository {
+    +Settings GetById(int id)
+    +bool Create(Settings item)
+    +bool Update(Settings item)
+    +bool Delete(Settings item)
+}
+
+class CustomField {
+    +int Id
+    +string CodeChamp
+    +string Libelle
+    +int Type
+    +string Options
+    +bool Visible
+    +int Order
+    +bool Interne
+    +string Clone
+    +bool Obligatoire
+    +string DefautValue
+}
+
+class Message {
+    +long Id
+    +long CleAppel
+    +string Date
+    +string Heure
+    +string Sujet
+    +string Destinataire
+    +string Contenu
+    +int Type
+}
+
+class Settings {
+    +int NbeJoursSemaine
+    +string TriMessageInverse
+    +string VueSemaineModulable
+    +string VueJourLineaire
+    +string VueCanevas
+    +string Vu2Colonnes 
+    +string TriMessage
+    +string ConfigNoShow
+}
+
+
+ISlot *-- Contact
+ISlot - SlotFactory
+ICreneauRepository *--SlotFactory
+ICreneauRepository -> ISlot : > creates
+IContactRepository -> Contact : > creates
+ICustomfieldRepository -> CustomField : > creates
+IMessageRepository -> Message : > creates
+Message *-- Contact
+ISettingsRepository -> Settings : > creates 
+@enduml

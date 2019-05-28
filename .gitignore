@@ -1,0 +1,8 @@
+*.zip
+*.gz
+*.out
+*.log
+*.toc
+*.aux
+*.glo
+*.ist
