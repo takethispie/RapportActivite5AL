@@ -6,5 +6,5 @@
 *.aux
 *.glo
 *.ist
-rapport.fdb_latexmk
-rapport.fls
+*.fdb_latexmk
+*.fls
