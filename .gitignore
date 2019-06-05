@@ -6,3 +6,5 @@
 *.aux
 *.glo
 *.ist
+rapport.fdb_latexmk
+rapport.fls
