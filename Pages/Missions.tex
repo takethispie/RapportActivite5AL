@@ -110,15 +110,20 @@ du contact renvoyait une commande à la page qui executait la commande qui consi
 en un appel http pour modifier le contact puis le mettre à jour dans la liste de contacts.
 \newline
 
-J'ai refactoriser le code et notamment transformer de nombreuses pages en modales y compris la page
+J'ai refactorisé le code et notamment transformé de nombreuses pages en modales y compris la page
 des détails d'un contact, dans la version actuelle de l'application la page liste de contact 
-ouvre une modales avec l'id du contact et lors de modifications c'est la modales 
-elle même qui fait des appel http, la modale retourne un resultat vide lors de sa fermeture 
+ouvre une modales avec l'id du contact et lors de modifications c'est la modale
+elle même qui fait des appels http, la modale retourne un resultat vide lors de sa fermeture 
 ou un objet contact si des modifications ont été faites pour pouvoir mettre à jour la liste, 
 ce fonctionnement de type master-details est aussi présent pour les instructions, les messages 
 et l'agenda et ce comportement y a été reproduit de la même manière dans ces dernières. 
 
-
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.35\linewidth]{Images/contact}
+	\caption{Page des contacts}
+	\label{fig:archhexa}
+\end{figure}
 
 
 
@@ -134,18 +139,15 @@ j'ai du aussi me baser sur le website et m'auto-former aux bonnes pratiques
 à appliquer à l'expérience utilisateur et l'interface graphique puisqu'une application
 n'a pas du tout les mêmes contraintes qu'un site web. \newline
 
-En prenant du recul je me suis rendu que le choix du framework Ionic était un choix judicieux 
-mais seulement à court terme, il est en effet assez difficile de maintenir toute 
-application basé sur le javascript et l'environement node car les outils et la qualité 
-d'un environement de déveleppement basé sur ces techno est assez médiocre, les librairie 
-deviennent incompatibles ou non d'une version sur l'autre, il est assez difficile 
-de débugger certaines erreurs à cause de l'epaisseur conséquente du stack de technologies
-utilisées. Si je n'avais pas eu d'aussi forte contraintes de temp pour produire un résultat 
-j'aurais utilisé le framework Xamarin qui aurait encore plus augmenté la portabilité 
-du code puisque j'aurais pu utiliser le noyau métier du web3 dans l'application
-ce qui aurait permis de réduire le temp de développement et peut être arriver 
-à produire un résultat aussi rapidement qu'avec l'utilisation du framework Ionic, 
-au moment des choix technologique j'ai peut être donc fait preuve d'un manque de vision génerale
-et sur le long terme. \newline
+Lors de mon rapport de 4ième année j'avais tiré la conclusion que javascript et son 
+écosystème est assez médiocre en terme de qualité des outils et framework, 
+un an plus tard mon avis a un peu changé, je pense qu'il est possible de trouver 
+des framework de qualité, comme Ionic avec sa dernière version, Angular ou React 
+et je pense finalement avoir fait les bon choix technologique pour cette application 
+pour le long terme mais malgré cela je ne pense pas que javascript serait mon premier 
+choix pour autre chose que du web.
+ \newline
+
+
 
 
