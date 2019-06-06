@@ -68,12 +68,58 @@ de l'application un système de cache complexe était utilisé pour charger une 
 et ainsi ne pas avoir à faire des appel regulier au serveur, pour l'affichage 
 un système de slide tout aussi complexe était utilisé pour faire correspondre le jour affiché 
 avec un des 7 jours en cache, cet ensemble était très mal écrit, tout à fait intestable 
-et peu performant.
+et peu performant. \newline
 
 pendant ma 5ième année j'ai refait cette page agenda, qui est la page la plus importante 
 de tout l'application, en supprimant ce système de cache qui était plus source d'erreur 
 et de difficulté de maintenabilité qu'autre chose puisqu'au final la requête pour charger 
-un jour de l'agenda depuis le serveur est très simple et rapide.
+un jour de l'agenda depuis le serveur est très simple et rapide. \newline
+
+nous avons supprimer le système de slide par un système simple d'animation in \& out css 
+qui donne l'impression que la page part sur le côté de l'écran pour laisser la page suivante
+arriver du côté opposé, en plus de performance multiplié par un facteur 10, le code à été 
+fortement réduit, l'animation est utilisé pour cacher une partie du chargement de la
+nouvelle journée de l'agenda. \newline
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.3\linewidth]{Images/agenda}
+	\caption{les changements visuels de la page agenda son mineur et ne deroutent pas l'utilisateur }
+	\label{fig:archhexa}
+\end{figure}
+
+\section{Contact}
+
+la page de contact a subis de nombreux changements aussi mais plus du côté du code 
+que l'interface graphique, le système de recherche de contact à été optimisé du côté 
+du serveur pour ainsi avoir une latence de réponse plus faible et des résultats 
+avec moins d'erreurs, l'affichage de la page de recherche est plus fluide car j'ai 
+changé l'architecture des données pour utilisé de manière plus poussée le reactive 
+programming et avoir l'état de l'interface graphique qui change correctement en 
+fonction des données ce qui parfois n'était pas le cas avec l'ancienne version 
+ou une mauvaise synchronisation entre par exemple le spinner de chargement 
+et le chargement des données était differé de plusieurs centaines de millisecondes 
+ce qui a un impact conséquent sur l'impression de fluidité. \newline
+
+Le transfert d'information et de contact entre les différentes pages utilisant un contact tel
+que la liste de contact, l'ajout de contact et la selection de contact depuis l'ajout 
+d'un rendez-vous dans l'agenda à été réduite à son minimum pour simplifier le tracage 
+des état de l'application: auparavant la liste de contact envoyait l'id du contact 	
+à la page de details du contact qui chargeait les informations du contact et en cas de modification 
+du contact renvoyait une commande à la page qui executait la commande qui consistait 
+en un appel http pour modifier le contact puis le mettre à jour dans la liste de contacts.
+\newline
+
+J'ai refactoriser le code et notamment transformer de nombreuses pages en modales y compris la page
+des détails d'un contact, dans la version actuelle de l'application la page liste de contact 
+ouvre une modales avec l'id du contact et lors de modifications c'est la modales 
+elle même qui fait des appel http, la modale retourne un resultat vide lors de sa fermeture 
+ou un objet contact si des modifications ont été faites pour pouvoir mettre à jour la liste, 
+ce fonctionnement de type master-details est aussi présent pour les instructions, les messages 
+et l'agenda et ce comportement y a été reproduit de la même manière dans ces dernières. 
+
+
+
 
 
 \newpage
